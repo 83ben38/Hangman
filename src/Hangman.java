@@ -11,6 +11,7 @@ public class Hangman extends GraphicsProgram {
             ((GHangman)getElement(0)).add();
         }
         ((GHangman)getElement(0)).reset();
-
+        GLetter l = new GLetter('c',true);
+        add(l,200,200);
     }
 }
