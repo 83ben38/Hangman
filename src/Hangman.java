@@ -47,19 +47,22 @@ public class Hangman extends GraphicsProgram {
     public void doRound(){
         String wor = words.get(randomInt(0,words.size()-1));
         for (int i = 0; i < wor.length(); i++) {
-            word.add(wor.charAt(i));
-            GLetter l = new GLetter(wor.charAt(i),true);
-            add(l,50+(i*30),200);
-            GLetters.add(l);
-            guessed.add(false);
+            if (wor.charAt(i) != '_') {
+                word.add(wor.charAt(i));
+                GLetter l = new GLetter(wor.charAt(i), true);
+                add(l, 50 + (i * 30), 200);
+                GLetters.add(l);
+                guessed.add(false);
+            }
         }
         for (int i = 0; i < letters.length; i++) {
             char l = letters[i];
-            if (!wor.contains(l + "")){
-                GLetter letter = new GLetter(l,false);
-                add(letter,100+((i%5+wor.length())*30),100+(i/5)*50);
-                GLetters.add(letter);
-            }
+                if (!wor.contains(l + "")) {
+                    GLetter letter = new GLetter(l, false);
+                    add(letter, 100 + ((i % 5 + wor.length()) * 30), 100 + (i / 5) * 50);
+                    GLetters.add(letter);
+                }
+
         }
         while(guessed.contains(false)){
             char c = Dialog.getString("What letter do you guess?").charAt(0);

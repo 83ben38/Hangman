@@ -1,10 +1,2 @@
-hello
-goodbye
-death
-decay
-logic
-error
-syntax
-IDE
-runtime
-letter
+
+key_word
