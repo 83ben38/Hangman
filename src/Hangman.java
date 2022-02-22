@@ -54,6 +54,9 @@ public class Hangman extends GraphicsProgram {
                 GLetters.add(l);
                 guessed.add(false);
             }
+            else{
+                guessed.add(true);
+            }
         }
         for (int i = 0; i < letters.length; i++) {
             char l = letters[i];
