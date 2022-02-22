@@ -80,6 +80,7 @@ public class Hangman extends GraphicsProgram {
                 }
                 c = s.charAt(0);
             }
+            guesses.add(c);
             if (!word.contains(c)){
                 h.add();
             }
