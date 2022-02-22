@@ -68,9 +68,17 @@ public class Hangman extends GraphicsProgram {
 
         }
         while(guessed.contains(false)){
-            char c = Dialog.getString("What letter do you guess?").charAt(0);
+            String s = Dialog.getString("What letter do you guess?");
+            while (s.length() > 0) {
+               s = Dialog.getString("What letter do you guess?");
+            }
+            char c = s.charAt(0);
             while(guesses.contains(c)){
-                c = Dialog.getString("What letter do you guess?").charAt(0);
+                s = Dialog.getString("What letter do you guess?");
+                while (s.length() > 0) {
+                    s = Dialog.getString("What letter do you guess?");
+                }
+                c = s.charAt(0);
             }
             if (!word.contains(c)){
                 h.add();
