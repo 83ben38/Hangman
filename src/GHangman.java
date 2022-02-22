@@ -57,4 +57,5 @@ public class GHangman extends GCompound {
         add(v);
         b.add(v);
     }
+
 }

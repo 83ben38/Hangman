@@ -6,9 +6,10 @@ import java.awt.*;
 
 public class GLetter extends GCompound {
     private GLabel letter;
-    private GRect line = new GRect(18,4);
+    private GRect line;
     public GLetter(char letter, boolean line){
         if (line){
+            this.line = new GRect(18,4);
             this.line.setFillColor(Color.black);
             this.line.setFilled(true);
             add(this.line);
@@ -20,5 +21,11 @@ public class GLetter extends GCompound {
     }
     public void show(boolean show){
         letter.setVisible(show);
+    }
+    public char getLetter(){
+        return letter.getLabel().charAt(0);
+    }
+    public boolean getLine(){
+        return line != null;
     }
 }
