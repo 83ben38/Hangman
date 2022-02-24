@@ -86,6 +86,7 @@ public class Hangman extends GraphicsProgram {
                 if (h.add()){
                     Dialog.showMessage("The word was " + wor);
                     Dialog.showMessage("You successfully completed " + completed + " words.");
+                    exit();
                 }
             }
             for (GLetter l: GLetters) {
