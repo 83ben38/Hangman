@@ -25,7 +25,7 @@ public class GHangman extends GCompound {
             b.remove(0);
         }
     }
-    public void add(){
+    public boolean add(){
         GObject v = null;
         switch (b.size()){
             case 0 ->{
@@ -50,12 +50,12 @@ public class GHangman extends GCompound {
                 v.setLocation(35,-25);
             }
             default -> {
-                Dialog.showMessage("You died.");
-                System.exit(0);
+                return true;
             }
         }
         add(v);
         b.add(v);
+        return false;
     }
 
 }

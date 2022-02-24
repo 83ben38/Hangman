@@ -14,6 +14,7 @@ public class Hangman extends GraphicsProgram {
     static ArrayList<GLetter> GLetters = new ArrayList<>();
     static ArrayList<Boolean> guessed = new ArrayList<>();
     static GHangman h = new GHangman();
+    static int completed = 0;
     public static void main(String[] args) {
         new Hangman().start();
     }
@@ -48,7 +49,7 @@ public class Hangman extends GraphicsProgram {
         String wor = words.get(randomInt(0,words.size()-1));
         for (int i = 0; i < wor.length(); i++) {
             if (wor.charAt(i) != '_') {
-                word.add(wor.charAt(i));
+                word.add(Character.toLowerCase(wor.charAt(i)));
                 GLetter l = new GLetter(wor.charAt(i), true);
                 add(l, 50 + (i * 30), 200);
                 GLetters.add(l);
@@ -68,21 +69,24 @@ public class Hangman extends GraphicsProgram {
 
         }
         while(guessed.contains(false)){
-            String s = Dialog.getString("What letter do you guess?");
+            String s = Dialog.getString("What letter do you guess?").toLowerCase();
             while (s.length() < 1) {
-               s = Dialog.getString("What letter do you guess?");
+               s = Dialog.getString("What letter do you guess?").toLowerCase();
             }
             char c = s.charAt(0);
             while(guesses.contains(c)){
-                s = Dialog.getString("What letter do you guess?");
+                s = Dialog.getString("What letter do you guess?").toLowerCase();
                 while (s.length() < 1) {
-                    s = Dialog.getString("What letter do you guess?");
+                    s = Dialog.getString("What letter do you guess?").toLowerCase();
                 }
                 c = s.charAt(0);
             }
             guesses.add(c);
             if (!word.contains(c)){
-                h.add();
+                if (h.add()){
+                    Dialog.showMessage("The word was " + wor);
+                    Dialog.showMessage("You successfully completed " + completed + " words.");
+                }
             }
             for (GLetter l: GLetters) {
                 if (l.getLetter() == c){
@@ -96,6 +100,7 @@ public class Hangman extends GraphicsProgram {
 
 
         Dialog.showMessage("Correct");
+        completed++;
         words.remove(wor);
     }
     public int randomInt(int from, int to){
