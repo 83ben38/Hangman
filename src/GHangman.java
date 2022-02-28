@@ -26,7 +26,7 @@ public class GHangman extends GCompound {
         }
     }
     public boolean add(){
-        GObject v = null;
+        GObject v;
         switch (b.size()){
             case 0 ->{
                 v = new GOval(15,15);

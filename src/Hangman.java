@@ -61,7 +61,7 @@ public class Hangman extends GraphicsProgram {
         }
         for (int i = 0; i < letters.length; i++) {
             char l = letters[i];
-                if (!wor.contains(l + "")) {
+                if (!(wor.contains(l + "") || wor.contains(Character.toUpperCase(l) + ""))) {
                     GLetter letter = new GLetter(l, false);
                     add(letter, 100 + ((i % 5 + wor.length()) * 30), 100 + (i / 5) * 50);
                     GLetters.add(letter);
@@ -90,7 +90,7 @@ public class Hangman extends GraphicsProgram {
                 }
             }
             for (GLetter l: GLetters) {
-                if (l.getLetter() == c){
+                if (Character.toLowerCase(l.getLetter()) == c){
                     l.show(true);
                     if (l.getLine()){
                         guessed.set((int) ((l.getX()-50)/30),true);
